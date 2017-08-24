@@ -1,9 +1,51 @@
+# built application files
+*.apk
+*.ap_
+# files for the dex VM
+*.dex
+# Java class files
+*.class
+# Android generated files
+bin/
+gen/
+# Local configuration file (sdk path, etc)
+local.properties
+
+# Eclipse project files
+.classpath
+.project
+.settings
+.factorypath
+.apt_generated
+# Maven related
+target/
+# Checkstyle
+.checkstyle
+# Android Lint
+lint.xml
+
+# IntelliJ
+.idea
 *.iml
+*.ipr
+*.iws
+classes
+gen-external-apklibs
+out/
+
+# Gradle
 .gradle
-/local.properties
-/.idea/workspace.xml
-/.idea/libraries
+build
+/build/
+/bin/
+/gen/
+/out/
+# Misc.
 .DS_Store
-/build
-/captures
-.externalNativeBuild
+*.jar.properties
+cache.properties
+cache.properties.lock
+# Crashlytics
+com_crashlytics_export_strings.xml
+
+.svn/
