@@ -33,4 +33,16 @@
         android:layout_alignStart="@+id/button1"
         android:layout_marginTop="20dp"
         />
+
+    <Button
+        android:text="显示topActivity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/button3"
+        android:layout_below="@+id/button2"
+        android:textColor="@color/colorAccent"
+        android:onClick="onClick"
+        android:layout_alignStart="@+id/button1"
+        android:layout_marginTop="20dp"
+        />
 </RelativeLayout>

@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
   <string name="app_name" >devtool</string>
+  <string name="accessibility_service_description">开启功能, 以跟踪栈顶 Activity</string>
+
   <string name="catalyst_reloadjs" project="catalyst" translatable="false">Reload</string>
   <string name="catalyst_debugjs" project="catalyst" translatable="false">Debug JS Remotely</string>
   <string name="catalyst_debugjs_off" project="catalyst" translatable="false">Stop Remote JS Debugging</string>
