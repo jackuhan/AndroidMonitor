@@ -12,6 +12,7 @@ package com.facebook.react.devsupport;
 import android.content.Context;
 import android.graphics.PixelFormat;
 import android.support.annotation.Nullable;
+import android.view.Gravity;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
 
@@ -31,21 +32,30 @@ import android.widget.FrameLayout;
     mWindowManager = (WindowManager) reactContext.getSystemService(Context.WINDOW_SERVICE);
   }
 
-  public void setFpsDebugViewVisible(boolean fpsDebugViewVisible) {
-    if (fpsDebugViewVisible && mFPSDebugViewContainer == null) {
-      mFPSDebugViewContainer = new FpsView(mReactContext);
-      WindowManager.LayoutParams params = new WindowManager.LayoutParams(
-          WindowManager.LayoutParams.MATCH_PARENT,
-          WindowManager.LayoutParams.MATCH_PARENT,
-          WindowManager.LayoutParams.TYPE_SYSTEM_OVERLAY,
-          WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE
-              | WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
-          PixelFormat.TRANSLUCENT);
-      mWindowManager.addView(mFPSDebugViewContainer, params);
-    } else if (!fpsDebugViewVisible && mFPSDebugViewContainer != null) {
-      mFPSDebugViewContainer.removeAllViews();
-      mWindowManager.removeView(mFPSDebugViewContainer);
-      mFPSDebugViewContainer = null;
+  public void setFpsDebugViewVisible() {
+    if (mFPSDebugViewContainer != null) {
+      stopFps();
     }
+    mFPSDebugViewContainer = new FpsView(mReactContext);
+    WindowManager.LayoutParams params = new WindowManager.LayoutParams();
+    params.x = 0;
+    params.y = 0;
+    params.width = WindowManager.LayoutParams.WRAP_CONTENT;
+    params.height = WindowManager.LayoutParams.WRAP_CONTENT;
+    params.gravity = Gravity.RIGHT | Gravity.TOP;
+    params.type = WindowManager.LayoutParams.TYPE_PHONE;
+    params.format = PixelFormat.RGBA_8888;
+    params.flags = WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL
+        | WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE;
+    mWindowManager.addView(mFPSDebugViewContainer, params);
+  }
+
+  public void stopFps(){
+    if(null==mFPSDebugViewContainer){
+      return;
+    }
+    mFPSDebugViewContainer.removeAllViews();
+    mWindowManager.removeView(mFPSDebugViewContainer);
+    mFPSDebugViewContainer = null;
   }
 }

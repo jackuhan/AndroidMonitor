@@ -5,8 +5,11 @@
     >
   <TextView
       android:id="@+id/fps_text"
+      android:minWidth="130dp"
+      android:minHeight="40dp"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
+      android:maxLines="5"
       android:layout_margin="3dp"
       android:background="#a4141823"
       android:gravity="right"

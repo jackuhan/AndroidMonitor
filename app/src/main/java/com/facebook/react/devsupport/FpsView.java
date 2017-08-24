@@ -11,10 +11,14 @@ package com.facebook.react.devsupport;
 
 import android.annotation.TargetApi;
 import android.content.Context;
+import android.view.MotionEvent;
+import android.view.WindowManager;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.util.Log;
 import com.han.devtool.R;
+import android.graphics.Point;
 
 import com.facebook.react.modules.core.ChoreographerCompat;
 import com.facebook.react.modules.debug.FpsDebugFrameCallback;
@@ -34,10 +38,12 @@ public class FpsView extends FrameLayout {
   private final TextView mTextView;
   private final FpsDebugFrameCallback mFrameCallback;
   private final FPSMonitorRunnable mFPSMonitorRunnable;
+  private final WindowManager mWindowManager;
 
   public FpsView(Context reactContext) {
     super(reactContext);
     inflate(reactContext, R.layout.fps_view, this);
+    mWindowManager = (WindowManager) getContext().getSystemService(Context.WINDOW_SERVICE);
     mTextView = (TextView) findViewById(R.id.fps_text);
     mFrameCallback = new FpsDebugFrameCallback(ChoreographerCompat.getInstance(), reactContext);
     mFPSMonitorRunnable = new FPSMonitorRunnable();
@@ -57,6 +63,31 @@ public class FpsView extends FrameLayout {
     super.onDetachedFromWindow();
     mFrameCallback.stop();
     mFPSMonitorRunnable.stop();
+  }
+
+  Point preP, curP;
+  @Override
+  public boolean onTouchEvent(MotionEvent event) {
+    switch (event.getAction()){
+      case MotionEvent.ACTION_DOWN:
+        preP = new Point((int)event.getRawX(), (int)event.getRawY());
+        break;
+
+      case MotionEvent.ACTION_MOVE:
+        curP = new Point((int)event.getRawX(), (int)event.getRawY());
+        int dx = curP.x - preP.x,
+            dy = curP.y - preP.y;
+
+        WindowManager.LayoutParams layoutParams = (WindowManager.LayoutParams) this.getLayoutParams();
+        layoutParams.x -= dx;
+        layoutParams.y += dy;
+        mWindowManager.updateViewLayout(this, layoutParams);
+
+        preP = curP;
+        break;
+    }
+
+    return false;
   }
 
   private void setCurrentFPS(double currentFPS, double currentJSFPS, int droppedUIFrames, int total4PlusFrameStutters) {
