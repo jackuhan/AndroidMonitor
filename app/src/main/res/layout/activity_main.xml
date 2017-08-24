@@ -78,6 +78,18 @@
         android:onClick="onClick"
         />
 
+        <Button
+            android:text="mem"
+            android:id="@+id/button3"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textColor="@color/colorAccent"
+            android:onClick="onClick"
+            />
+
     </LinearLayout>
 
     <TextView

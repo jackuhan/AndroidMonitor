@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.facebook.react.devsupport.DebugOverlayController;
 import com.han.activitytracker.AccessibilityUtil;
 import com.han.activitytracker.TrackerService;
+import com.han.cpu.CPUService;
 import com.han.fps.FPSService;
 import ezy.assist.compat.RomUtil;
 import ezy.assist.compat.SettingsCompat;
@@ -50,6 +51,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (AccessibilityUtil.checkAccessibility(this)) {
           startService(new Intent(this, TrackerService.class).putExtra(TrackerService.Tracker_COMMAND, TrackerService.Tracker_COMMAND_OPEN));
         }
+        break;
+      }
+
+      case R.id.button3: {
+        startService(new Intent(this, CPUService.class).putExtra(CPUService.CPU_COMMAND, CPUService.CPU_COMMAND_OPEN));
         break;
       }
 

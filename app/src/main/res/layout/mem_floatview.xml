@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="300dp"
+    android:layout_height="@dimen/mem_monitor_height"
+    android:background="#a4141823"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    >
+
+  <com.tt.curvechartlib.CurveChartView
+      android:id="@+id/mem_monitor_view_floatcurveview"
+      android:layout_width="match_parent"
+      android:layout_height="@dimen/mem_monitor_height"
+      />
+
+  <TextView
+      android:id="@+id/mem_monitor_view_namevalue"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_alignParentBottom="true"
+      android:layout_alignParentRight="true"
+      android:padding="@dimen/mem_monitor_text_padding"
+      android:textColor="#00f0af"
+      android:textSize="13sp"
+      />
+
+  <ImageView
+      android:id="@+id/iv_close"
+      android:layout_width="30dp"
+      android:layout_height="30dp"
+      android:layout_alignParentRight="true"
+      android:layout_marginRight="30dp"
+      android:layout_marginTop="30dp"
+      android:src="@drawable/ic_close"
+      />
+
+</RelativeLayout>

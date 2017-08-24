@@ -5,7 +5,7 @@ android {
     buildToolsVersion "25.0.2"
     defaultConfig {
         applicationId "com.han.devtool"
-        minSdkVersion 19
+        minSdkVersion 16
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"
@@ -29,4 +29,5 @@ dependencies {
 
     compile 'de.greenrobot:eventbus:2.4.0'
     compile project(':ezy-settings-compat')
+    compile project(':curvechartlib-release')
 }
