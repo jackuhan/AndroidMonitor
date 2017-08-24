@@ -8,9 +8,9 @@ import de.greenrobot.event.EventBus;
 
 public class TrackerService extends AccessibilityService {
   public static final String TAG = "TrackerService";
-  public static final String COMMAND = "COMMAND";
-  public static final String COMMAND_OPEN = "COMMAND_OPEN";
-  public static final String COMMAND_CLOSE = "COMMAND_CLOSE";
+  public static final String Tracker_COMMAND = "Tracker_COMMAND";
+  public static final String Tracker_COMMAND_OPEN = "Tracker_COMMAND_OPEN";
+  public static final String Tracker_COMMAND_CLOSE = "Tracker_COMMAND_CLOSE";
   TrackerWindowManager mTrackerWindowManager;
 
   private void initTrackerWindowManager() {
@@ -21,11 +21,11 @@ public class TrackerService extends AccessibilityService {
     Log.d(TAG, "onStartCommand");
     initTrackerWindowManager();
 
-    String command = intent.getStringExtra(COMMAND);
+    String command = intent.getStringExtra(Tracker_COMMAND);
     if (command != null) {
-      if (command.equals(COMMAND_OPEN)) {
+      if (command.equals(Tracker_COMMAND_OPEN)) {
         mTrackerWindowManager.addView();
-      } else if (command.equals(COMMAND_CLOSE)) mTrackerWindowManager.removeView();
+      } else if (command.equals(Tracker_COMMAND_CLOSE)) mTrackerWindowManager.removeView();
     }
 
     return super.onStartCommand(intent, flags, startId);

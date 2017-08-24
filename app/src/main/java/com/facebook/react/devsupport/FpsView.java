@@ -11,7 +11,9 @@ package com.facebook.react.devsupport;
 
 import android.annotation.TargetApi;
 import android.content.Context;
+import android.content.Intent;
 import android.view.MotionEvent;
+import android.view.View;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
@@ -22,6 +24,7 @@ import android.graphics.Point;
 
 import com.facebook.react.modules.core.ChoreographerCompat;
 import com.facebook.react.modules.debug.FpsDebugFrameCallback;
+import com.han.fps.FPSService;
 import java.util.Locale;
 
 /**
@@ -43,6 +46,12 @@ public class FpsView extends FrameLayout {
   public FpsView(Context reactContext) {
     super(reactContext);
     inflate(reactContext, R.layout.fps_view, this);
+    findViewById(R.id.iv_close).setOnClickListener(new OnClickListener() {
+      @Override public void onClick(View v) {
+        getContext().startService(
+            new Intent(getContext(), FPSService.class).putExtra(FPSService.FPS_COMMAND, FPSService.FPS_COMMAND_CLOSE));
+      }
+    });
     mWindowManager = (WindowManager) getContext().getSystemService(Context.WINDOW_SERVICE);
     mTextView = (TextView) findViewById(R.id.fps_text);
     mFrameCallback = new FpsDebugFrameCallback(ChoreographerCompat.getInstance(), reactContext);

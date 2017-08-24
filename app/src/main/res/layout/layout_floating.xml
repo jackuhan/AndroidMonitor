@@ -39,11 +39,17 @@
       android:textSize="15sp"
       />
 
+  <View
+      android:layout_width="match_parent"
+      android:layout_height="1px"
+      android:layout_marginTop="3dp"
+      android:background="#777777"
+      />
+
   <ImageView
       android:id="@+id/iv_close"
       android:layout_width="30dp"
       android:layout_height="30dp"
-      android:layout_marginLeft="8dp"
       android:src="@drawable/ic_close"
       />
 

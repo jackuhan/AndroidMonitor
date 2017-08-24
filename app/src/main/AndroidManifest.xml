@@ -32,6 +32,10 @@
                 android:resource="@xml/accessibility_service_config"/>
 
         </service>
+
+        <service
+            android:name="com.han.fps.FPSService">
+        </service>
     </application>
 
 </manifest>

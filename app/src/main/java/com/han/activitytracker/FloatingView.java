@@ -40,7 +40,7 @@ public class FloatingView extends LinearLayout {
       @Override public void onClick(View v) {
         Toast.makeText(mContext, "关闭悬浮框", Toast.LENGTH_SHORT).show();
         mContext.startService(
-            new Intent(mContext, TrackerService.class).putExtra(TrackerService.COMMAND, TrackerService.COMMAND_CLOSE));
+            new Intent(mContext, TrackerService.class).putExtra(TrackerService.Tracker_COMMAND, TrackerService.Tracker_COMMAND_CLOSE));
       }
     });
   }

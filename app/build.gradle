@@ -28,4 +28,5 @@ dependencies {
     testCompile 'junit:junit:4.12'
 
     compile 'de.greenrobot:eventbus:2.4.0'
+    compile project(':ezy-settings-compat')
 }
