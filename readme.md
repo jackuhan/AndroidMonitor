@@ -2,7 +2,7 @@
 
 Android开发辅助工具fps,topActivity
 
-
+<img src="screenshots/pic1.jpg" width="50%" height="40%" alt="Screenshot_1">
 
 ## 作者联系方式
   QQ:1196681436
