@@ -1,41 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.han.devtool" >
+    package="com.han.devtool">
 
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+  <uses-permission android:name="android.permission.INTERNET"/>
+  <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+  <uses-permission android:name="android.permission.READ_LOGS" />
+  <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
-    <application
-        android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
-        android:supportsRtl="true"
-        android:theme="@style/AppTheme" >
-        <activity android:name="com.han.devtool.MainActivity" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+  <!--  'Sup Koush: https://plus.google.com/103583939320326217147/posts/T9xnMJEnzf1 -->
+  <uses-permission android:name="android.permission.ACCESS_SUPERUSER" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+  <application
+      android:allowBackup="true"
+      android:icon="@mipmap/ic_launcher"
+      android:label="@string/app_name"
+      android:supportsRtl="true"
+      android:theme="@style/AppTheme">
+    <activity android:name=".MainActivity">
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN"/>
 
-        <service
-            android:name="com.han.activitytracker.TrackerService"
-            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
+        <category android:name="android.intent.category.LAUNCHER"/>
+      </intent-filter>
+    </activity>
 
-            <intent-filter>
-                <action android:name="android.accessibilityservice.AccessibilityService"/>
-            </intent-filter>
+    <service
+        android:name="com.han.activitytracker.TrackerService"
+        android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
+      <intent-filter>
+        <action android:name="android.accessibilityservice.AccessibilityService"/>
+      </intent-filter>
 
-            <meta-data
-                android:name="android.accessibilityservice"
-                android:resource="@xml/accessibility_service_config"/>
+      <meta-data
+          android:name="android.accessibilityservice"
+          android:resource="@xml/accessibility_service_config"/>
+    </service>
+    <service android:name="com.han.fps.FPSService"/>
+    <service android:name="com.han.cpu.CPUService"/>
+    <service android:name="com.han.log.LogService"/>
 
-        </service>
-
-        <service android:name="com.han.fps.FPSService" />
-        <service android:name="com.han.cpu.CPUService"/>
-        <service android:name="com.han.log.LogService"/>
-    </application>
+    <activity
+        android:label="Activity启动时间日志"
+        android:name="com.han.log.MyListActivity"
+        android:launchMode="singleTop">
+    </activity>
+  </application>
 
 </manifest>

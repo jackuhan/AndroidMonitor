@@ -49,7 +49,7 @@ public class CPUService extends Service {
     WindowManager.LayoutParams params = new WindowManager.LayoutParams();
     params.x = 0;
     params.y = 0;
-    params.width = WindowManager.LayoutParams.MATCH_PARENT;
+    params.width = WindowManager.LayoutParams.WRAP_CONTENT;
     params.height = WindowManager.LayoutParams.WRAP_CONTENT;
     params.gravity = Gravity.CENTER | Gravity.TOP;
     params.type = WindowManager.LayoutParams.TYPE_PHONE;

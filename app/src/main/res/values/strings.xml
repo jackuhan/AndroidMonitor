@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <string name="app_name" >devtool</string>
+  <string name="app_name">devtool</string>
   <string name="accessibility_service_description">开启功能, 以跟踪栈顶 Activity</string>
 
   <string name="catalyst_reloadjs" project="catalyst" translatable="false">Reload</string>
@@ -25,4 +25,16 @@
   <string name="catalyst_copy_button" project="catalyst" translatable="false">Copy</string>
   <string name="catalyst_report_button" project="catalyst" translatable="false">Report</string>
   <string name="catalyst_loading_from_url" project="catalyst" translatable="false">Loading from %1$s…</string>
+  <string name="title_activity_timelist">TimelistActivity</string>
+
+
+  <string name="add">添加</string>
+  <string name="add_recy">add_recy</string>
+  <string name="listview">listview</string>
+  <string name="recyclerview">recyclerview</string>
+  <string name="query">查询</string>
+  <string name="songname">歌曲</string>
+  <string name="singer">歌手</string>
+  <string name="input">输入歌曲或歌手</string>
+  <string name="click">请点右上角，然后点击ListView</string>
 </resources>

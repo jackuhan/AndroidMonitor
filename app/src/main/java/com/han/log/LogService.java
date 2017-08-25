@@ -1,16 +1,21 @@
 package com.han.log;
 
 import android.app.Service;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.PixelFormat;
 import android.os.AsyncTask;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
+import android.support.v4.widget.CursorAdapter;
+import android.support.v4.widget.SimpleCursorAdapter;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.WindowManager;
 import android.widget.Filter;
+import com.han.devtool.R;
 import com.nolanlawson.logcat.data.LogLine;
 import com.nolanlawson.logcat.data.SearchCriteria;
 import com.nolanlawson.logcat.helper.PreferenceHelper;
@@ -31,10 +36,23 @@ public class LogService extends Service {
   public static final String COMMAND_CLOSE = "COMMAND_CLOSE";
   private WindowManager mWindowManager;
 
+  private SimpleCursorAdapter mSimpleCursorAdapter;
+  private SQLiteDatabase mDbWriter;
+  private SQLiteDatabase mDbReader;
+  private MySQLite mMySQLite;
+
   @Override public int onStartCommand(Intent intent, int flags, int startId) {
     Log.d(TAG, "onStartCommand");
 
     mWindowManager = (WindowManager) getSystemService(Context.WINDOW_SERVICE);
+    mMySQLite = new MySQLite(this);
+    mDbWriter = mMySQLite.getWritableDatabase();
+    mDbReader = mMySQLite.getReadableDatabase();
+
+    mSimpleCursorAdapter = new SimpleCursorAdapter(this, R.layout.listview_sql_item, null,
+        new String[] { "songname", "singer" }, new int[] { R.id.logoutput, R.id.timestamp },
+        CursorAdapter.FLAG_REGISTER_CONTENT_OBSERVER);
+
     String command = intent.getStringExtra(COMMAND);
     if (command != null) {
       if (command.equals(COMMAND_OPEN)) {
@@ -45,6 +63,13 @@ public class LogService extends Service {
     }
 
     return super.onStartCommand(intent, flags, startId);
+  }
+
+  public void insertData(String logContent,String timestamp) {
+    ContentValues mContentValues = new ContentValues();
+    mContentValues.put(MySQLite.KEY_logOutput, logContent);
+    mContentValues.put(MySQLite.KEY_timestamp, timestamp);
+    mDbWriter.insert(MySQLite.DB_NAME, null, mContentValues);
   }
 
   @Nullable @Override public IBinder onBind(Intent intent) {
@@ -66,7 +91,7 @@ public class LogService extends Service {
     WindowManager.LayoutParams params = new WindowManager.LayoutParams();
     params.x = 0;
     params.y = 0;
-    params.width = WindowManager.LayoutParams.MATCH_PARENT;
+    params.width = WindowManager.LayoutParams.WRAP_CONTENT;
     params.height = WindowManager.LayoutParams.WRAP_CONTENT;
     params.gravity = Gravity.CENTER | Gravity.TOP;
     params.type = WindowManager.LayoutParams.TYPE_PHONE;
@@ -77,7 +102,7 @@ public class LogService extends Service {
   }
 
   public void openFPS() {
-    logLineList = new ArrayList<LogLine>();
+    //logLineList = new ArrayList<LogLine>();
     startUpMainLog();
 
     if (mFloatingView == null) {
@@ -128,7 +153,7 @@ public class LogService extends Service {
 
   private boolean collapsedMode = false;
   private final Object mLock = new Object();
-  private List<LogLine> logLineList;
+  //private List<LogLine> logLineList;
   private ArrayFilter mFilter;
 
   public void addWithFilter(LogLine object, CharSequence text) {
@@ -141,11 +166,12 @@ public class LogService extends Service {
 
     List<LogLine> filteredObjects = mFilter.performFilteringOnList(inputList, text);
 
-    if (null != filteredObjects && filteredObjects.size() > 0) {
+    //&& filteredObjects.get(0).getTag().equalsIgnoreCase("ActivityManager")
+    if (null != filteredObjects && filteredObjects.size() > 0 && filteredObjects.get(0).getTag().equalsIgnoreCase("ActivityManager")) {
       synchronized (mLock) {
-        logLineList.addAll(filteredObjects);//TODO 每次添加数组数量为1
-
+        //logLineList.addAll(filteredObjects);//TODO 每次添加数组数量为1
         EventBus.getDefault().post(new LogdEvent(filteredObjects.get(0)));
+        insertData(filteredObjects.get(0).getLogOutput(),filteredObjects.get(0).getTimestamp());
       }
     }
   }
@@ -272,9 +298,7 @@ public class LogService extends Service {
       this.onFinished = onFinished;
     }
 
-
   }
-
 
   /**
    * <p>An array filter constrains the content of the array adapter with
@@ -349,7 +373,7 @@ public class LogService extends Service {
 
     @SuppressWarnings("unchecked") @Override protected void publishResults(CharSequence constraint, FilterResults results) {
       //noinspection unchecked
-      logLineList = (List<LogLine>) results.values;
+      //logLineList = (List<LogLine>) results.values;
     }
   }
 }

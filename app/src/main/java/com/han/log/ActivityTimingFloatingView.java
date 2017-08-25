@@ -3,16 +3,13 @@ package com.han.log;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Point;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 import com.han.devtool.R;
-import com.han.log.LogService;
 import com.nolanlawson.logcat.data.LogLine;
 import de.greenrobot.event.EventBus;
 
@@ -40,6 +37,14 @@ public class ActivityTimingFloatingView extends LinearLayout {
       @Override public void onClick(View v) {
         mContext.startService(
             new Intent(mContext, LogService.class).putExtra(LogService.COMMAND, LogService.COMMAND_CLOSE));
+      }
+    });
+
+    findViewById(R.id.more).setOnClickListener(new OnClickListener() {
+      @Override public void onClick(View v) {
+        Intent i = new Intent(mContext, MyListActivity.class);
+        i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        mContext.startActivity(i);
       }
     });
   }
