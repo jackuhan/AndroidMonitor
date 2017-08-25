@@ -18,6 +18,7 @@ import com.han.activitytracker.AccessibilityUtil;
 import com.han.activitytracker.TrackerService;
 import com.han.cpu.CPUService;
 import com.han.fps.FPSService;
+import com.han.log.LogService;
 import com.nolanlawson.logcat.helper.SuperUserHelper;
 import ezy.assist.compat.RomUtil;
 import ezy.assist.compat.SettingsCompat;
@@ -66,6 +67,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
       }
 
       case R.id.button5: {
+        startService(new Intent(this, LogService.class).putExtra(LogService.COMMAND, LogService.COMMAND_OPEN));
         break;
       }
 

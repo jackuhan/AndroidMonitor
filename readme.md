@@ -8,7 +8,13 @@ Android开发辅助工具
 ### topActivity
 显示最顶层activity名称,app包名,辅助开发使用。
 
-<img src="screenshots/pic3.jpg" width="50%" height="40%" alt="Screenshot_1">
+### activity启动时间日志
+显示最activity启动时间,需要root权限。
+
+### cpu和内存使用率记录
+正在开发中。
+
+<img src="screenshots/pic4.jpg" width="50%" height="40%" alt="Screenshot_1">
 
 
 打开fpsmonitor需要打开悬浮窗权限。
