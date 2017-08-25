@@ -30,4 +30,5 @@ dependencies {
     compile 'de.greenrobot:eventbus:2.4.0'
     compile project(':ezy-settings-compat')
     compile project(':curvechartlib-release')
+    compile project(':catlog')
 }

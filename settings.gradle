@@ -1,3 +1,4 @@
 include ':app'
+include ':catlog'
 include ':ezy-settings-compat'
 include ':curvechartlib-release'

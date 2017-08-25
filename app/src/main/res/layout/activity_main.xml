@@ -5,100 +5,162 @@
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="com.han.devtool.MainActivity">
+    tools:context="com.han.devtool.MainActivity"
+    >
 
-    <LinearLayout
-        android:id="@+id/ll_top"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <TextView
-            android:id="@+id/manage"
-            android:layout_width="0dp"
-            android:layout_height="40dp"
-            android:layout_margin="10dp"
-            android:layout_weight="1"
-            android:background="#673AB7"
-            android:gravity="center"
-            android:tag="top"
-            android:text="授权悬浮窗"
-            android:textColor="#ffffff"
-            android:textColorHint="#ff0000"
-            android:onClick="onClick"
-            android:textSize="14dp"/>
-        <TextView
-            android:id="@+id/toggle"
-            android:layout_width="0dp"
-            android:layout_height="40dp"
-            android:layout_margin="10dp"
-            android:layout_weight="1"
-            android:background="#673AB7"
-            android:gravity="center"
-            android:text="切换悬窗权限"
-            android:textColor="#ffffff"
-            android:textColorHint="#ff0000"
-            android:onClick="onClick"
-            android:textSize="14dp"/>
+  <LinearLayout
+      android:id="@+id/ll_top"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="horizontal"
+      >
 
-    </LinearLayout>
+    <TextView
+        android:id="@+id/manage"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_margin="5dp"
+        android:layout_weight="1"
+        android:background="#673AB7"
+        android:gravity="center"
+        android:onClick="onClick"
+        android:tag="top"
+        android:text="授权悬浮窗"
+        android:textColor="#ffffff"
+        android:textColorHint="#ff0000"
+        android:textSize="14dp"
+        />
 
-    <LinearLayout
-        android:id="@+id/ll_monitors"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/ll_top"
-        android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:orientation="horizontal">
+    <TextView
+        android:id="@+id/toggle"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_margin="5dp"
+        android:layout_weight="1"
+        android:background="#673AB7"
+        android:gravity="center"
+        android:onClick="onClick"
+        android:text="切换悬窗权限"
+        android:textColor="#ffffff"
+        android:textColorHint="#ff0000"
+        android:textSize="14dp"
+        />
+
+  </LinearLayout>
+
+  <LinearLayout
+      android:id="@+id/ll_monitors"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_below="@+id/ll_top"
+      android:layout_marginTop="@dimen/activity_vertical_margin"
+      android:orientation="horizontal"
+      >
 
     <Button
-        android:text="fps monitor"
         android:id="@+id/button1"
         android:layout_width="0dp"
         android:layout_height="40dp"
-        android:layout_margin="10dp"
+        android:layout_margin="5dp"
         android:layout_weight="1"
         android:gravity="center"
-        android:textColor="@color/colorAccent"
         android:onClick="onClick"
+        android:text="FPS"
+        android:textColor="@color/colorAccent"
+        android:textSize="14dp"
         />
 
     <Button
-        android:text="topActivity"
         android:id="@+id/button2"
         android:layout_width="0dp"
         android:layout_height="40dp"
-        android:layout_margin="10dp"
+        android:layout_margin="5dp"
         android:layout_weight="1"
         android:gravity="center"
-        android:textColor="@color/colorAccent"
         android:onClick="onClick"
+        android:text="topActivity"
+        android:textColor="@color/colorAccent"
+        android:textSize="10dp"
         />
 
-        <Button
-            android:text="mem"
-            android:id="@+id/button3"
-            android:layout_width="0dp"
-            android:layout_height="40dp"
-            android:layout_margin="10dp"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:textColor="@color/colorAccent"
-            android:onClick="onClick"
-            />
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_margin="5dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:onClick="onClick"
+        android:text="内存"
+        android:textColor="@color/colorAccent"
+        android:textSize="14dp"
+        />
 
-    </LinearLayout>
+  </LinearLayout>
 
-    <TextView
-        android:id="@+id/info"
-        android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:layout_below="@+id/ll_monitors"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:hint="check result"
-        android:textSize="12dp"/>
+  <LinearLayout
+      android:id="@+id/ll_root"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_below="@+id/ll_monitors"
+      android:layout_marginTop="@dimen/activity_vertical_margin"
+      android:orientation="horizontal"
+      >
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_margin="5dp"
+        android:layout_weight="1"
+        android:background="#673AB7"
+        android:gravity="center"
+        android:onClick="onClick"
+        android:tag="top"
+        android:text="获取root权限"
+        android:textColor="#ffffff"
+        android:textColorHint="#ff0000"
+        android:textSize="14dp"
+        />
+
+  </LinearLayout>
+
+  <LinearLayout
+      android:id="@+id/ll_root_monitor"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_below="@+id/ll_root"
+      android:layout_marginTop="@dimen/activity_vertical_margin"
+      android:orientation="horizontal"
+      >
+
+    <Button
+        android:id="@+id/button5"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_margin="5dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:onClick="onClick"
+        android:text="Activity启动时间"
+        android:textColor="@color/colorAccent"
+        android:textSize="14dp"
+        />
+
+  </LinearLayout>
+
+  <TextView
+      android:id="@+id/info"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_below="@+id/ll_root_monitor"
+      android:layout_margin="5dp"
+      android:layout_marginTop="@dimen/activity_vertical_margin"
+      android:hint="check result"
+      android:textSize="12dp"
+      />
 </RelativeLayout>

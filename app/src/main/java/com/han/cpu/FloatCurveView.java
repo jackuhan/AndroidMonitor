@@ -98,9 +98,11 @@ public class FloatCurveView extends RelativeLayout {
 
       case MotionEvent.ACTION_MOVE:
         curP = new Point((int) event.getRawX(), (int) event.getRawY());
-        int dy = curP.y - preP.y;
+        int dx = curP.x - preP.x,
+            dy = curP.y - preP.y;
 
         WindowManager.LayoutParams layoutParams = (WindowManager.LayoutParams) this.getLayoutParams();
+        layoutParams.x += dx;
         layoutParams.y += dy;
         mWindowManager.updateViewLayout(this, layoutParams);
 

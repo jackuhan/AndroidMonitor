@@ -18,6 +18,7 @@ import com.han.activitytracker.AccessibilityUtil;
 import com.han.activitytracker.TrackerService;
 import com.han.cpu.CPUService;
 import com.han.fps.FPSService;
+import com.nolanlawson.logcat.helper.SuperUserHelper;
 import ezy.assist.compat.RomUtil;
 import ezy.assist.compat.SettingsCompat;
 import java.io.ByteArrayOutputStream;
@@ -56,6 +57,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
       case R.id.button3: {
         startService(new Intent(this, CPUService.class).putExtra(CPUService.CPU_COMMAND, CPUService.CPU_COMMAND_OPEN));
+        break;
+      }
+
+      case R.id.button4: {
+        SuperUserHelper.requestRoot(this);
+        break;
+      }
+
+      case R.id.button5: {
         break;
       }
 

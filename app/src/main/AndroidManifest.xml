@@ -33,13 +33,9 @@
 
         </service>
 
-        <service
-            android:name="com.han.fps.FPSService">
-        </service>
-
-        <service
-            android:name="com.han.cpu.CPUService">
-        </service>
+        <service android:name="com.han.fps.FPSService" />
+        <service android:name="com.han.cpu.CPUService"/>
+        <service android:name="com.han.log.LogService"/>
     </application>
 
 </manifest>
