@@ -1,7 +1,10 @@
 package com.han.devtool;
 
 import android.content.Intent;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.text.method.ScrollingMovementMethod;
 import android.view.View;
@@ -63,7 +66,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
       }
 
       case R.id.manage:
-        SettingsCompat.manageDrawOverlays(this);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+          if(!Settings.canDrawOverlays(getApplicationContext())) {
+            //启动Activity让用户授权
+            Intent intent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION);
+            intent.setData(Uri.parse("package:" + getPackageName()));
+            startActivityForResult(intent,100);
+          }
+        } else {
+          SettingsCompat.manageDrawOverlays(this);
+        }
+
         break;
       case R.id.toggle:
         boolean granted1 = SettingsCompat.canDrawOverlays(this);
@@ -71,7 +84,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         boolean granted2 = SettingsCompat.canDrawOverlays(this);
         Toast.makeText(this,RomUtil.getVersion() + "\n" +RomUtil.getName() + "\ngranted: " + granted2,Toast.LENGTH_LONG).show();
         break;
-      
+
     }
   }
 

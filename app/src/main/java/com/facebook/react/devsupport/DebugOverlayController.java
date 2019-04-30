@@ -11,6 +11,7 @@ package com.facebook.react.devsupport;
 
 import android.content.Context;
 import android.graphics.PixelFormat;
+import android.os.Build;
 import android.support.annotation.Nullable;
 import android.view.Gravity;
 import android.view.WindowManager;
@@ -43,7 +44,11 @@ import android.widget.FrameLayout;
     params.width = WindowManager.LayoutParams.WRAP_CONTENT;
     params.height = WindowManager.LayoutParams.WRAP_CONTENT;
     params.gravity = Gravity.RIGHT | Gravity.TOP;
-    params.type = WindowManager.LayoutParams.TYPE_PHONE;
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+      params.type = WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY;
+    } else {
+      params.type = WindowManager.LayoutParams.TYPE_PHONE;
+    }
     params.format = PixelFormat.RGBA_8888;
     params.flags = WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL
         | WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE;
