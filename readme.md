@@ -1,6 +1,8 @@
 # AndroidMonitor
 Android开发辅助工具
 
+### download url 下载地址
+https://github.com/jackuhan/AndroidMonitor/releases/download/1.0.0/app-debug.apk
 
 ### fps monitor
 显示手机帧率和累计丢帧数
