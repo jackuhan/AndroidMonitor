@@ -66,18 +66,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
       }
 
       case R.id.manage:
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-          if(!Settings.canDrawOverlays(getApplicationContext())) {
-            //启动Activity让用户授权
-            Intent intent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION);
-            intent.setData(Uri.parse("package:" + getPackageName()));
-            startActivityForResult(intent,100);
-          }
-        } else {
           SettingsCompat.manageDrawOverlays(this);
-        }
-
         break;
+
       case R.id.toggle:
         boolean granted1 = SettingsCompat.canDrawOverlays(this);
         SettingsCompat.setDrawOverlays(this, !granted1);
