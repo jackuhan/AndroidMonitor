@@ -1,14 +1,14 @@
 apply plugin: 'com.android.application'
 
 android {
-  compileSdkVersion 25
-  buildToolsVersion "25.0.2"
+  compileSdkVersion compile_sdk_version
+  buildToolsVersion build_tools_version
   defaultConfig {
     applicationId "com.han.devtool"
-    minSdkVersion 16
-    targetSdkVersion 25
-    versionCode 1
-    versionName "1.0"
+    minSdkVersion min_sdk_version
+    targetSdkVersion target_sdk_version
+    versionCode version_code
+    versionName version_name
     testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
   }
   buildTypes {
@@ -20,16 +20,16 @@ android {
 }
 
 dependencies {
-  compile fileTree(dir: 'libs', include: ['*.jar'])
-  androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+  implementation fileTree(dir: 'libs', include: ['*.jar'])
+  androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
     exclude group: 'com.android.support', module: 'support-annotations'
   })
 
-  compile project(':ezy-settings-compat')
-  compile project(':curvechartlib-release')
-  compile project(':catlog')
-  compile 'com.android.support:appcompat-v7:25.3.1'
-  compile 'de.greenrobot:eventbus:2.4.0'
-  compile 'com.android.support:design:25.3.1'
-  testCompile 'junit:junit:4.12'
+  implementation project(':ezy-settings-compat')
+  implementation project(':curvechartlib-release')
+  implementation project(':catlog')
+  implementation "com.android.support:appcompat-v7:$android_support_version"
+  implementation "de.greenrobot:eventbus:2.4.0"
+  implementation "com.android.support:design:$android_support_version"
+  testImplementation "junit:junit:4.12"
 }
